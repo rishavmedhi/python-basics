@@ -52,14 +52,55 @@ class SLinkedList:
             self.header = newNode
 
 
-# creating node elements
-n1 = Node("1")
-n2 = Node("2")
-n3 = Node("3")
+# accepting inputs
+t = input()
+size = []
+element = []
+g_size = []
+for i in range(0,t):
+    l = input()
+    elements = raw_input()
+    k = input()
 
-list = SLinkedList()
-list.insertlist(n1)
-list.insertlist(n2)
-list.insertlist(n3)
+    size.append(l)
+    element.append(elements)
+    g_size.append(k)
 
-list.printlist()
+# evaluating the input
+for i in range(0,t):
+    elem_arr = element[i].split(' ')
+    inp_list = SLinkedList()
+    k = g_size[i]
+    # forming the linked list
+    for x in elem_arr:
+        newnode = Node(x)
+        inp_list.insertlist(newnode)
+
+    # reversing the array elements in groups of k
+    newlist = SLinkedList()
+    listpointer = inp_list.header
+    group_array = []
+    counter = 0
+    while listpointer is not None:
+        if counter != k:
+            group_array.append(listpointer.dataval)
+            listpointer = listpointer.nextval
+            counter += 1
+        else:
+            group_array = group_array[::-1]
+            for x in group_array:
+                newnode = Node(x)
+                newlist.insertlist(newnode)
+            group_array = []
+            counter = 0
+        # print group_array
+
+    # remaining elements that are not processed if the last group is small
+    if len(group_array) > 0:
+        group_array = group_array[::-1]
+        for x in group_array:
+            newnode = Node(x)
+            newlist.insertlist(newnode)
+
+    print "###"
+    newlist.printlist()
