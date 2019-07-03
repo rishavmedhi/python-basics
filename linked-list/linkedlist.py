@@ -10,12 +10,22 @@ class SLinkedList:
         self.header = None
 
     # printing the list elements
-    def printList(self):
+    def printlist(self):
         lpointer = self.header
         while lpointer is not None:
             node = lpointer
             print node.dataval
             lpointer = lpointer.nextval
+
+    #inserting the list elements
+    def insertlist(self,newNode=None):
+        lpointer = self.header
+        if lpointer is not None:
+            while lpointer.nextval is not None:
+                lpointer = lpointer.nextval
+            lpointer.nextval = newNode
+        else:
+            self.header = newNode
 
 
 # creating node elements
@@ -24,8 +34,8 @@ n2 = Node("2")
 n3 = Node("3")
 
 list = SLinkedList()
-list.header = n1
-n1.nextval = n2
-n2.nextval = n3
+list.insertlist(n1)
+list.insertlist(n2)
+list.insertlist(n3)
 
-list.printList()
+list.printlist()
