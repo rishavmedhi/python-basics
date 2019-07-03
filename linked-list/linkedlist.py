@@ -9,6 +9,14 @@ class SLinkedList:
     def __init__(self):
         self.header = None
 
+    # printing the list elements
+    def printList(self):
+        lpointer = self.header
+        while lpointer is not None:
+            node = lpointer
+            print node.dataval
+            lpointer = lpointer.nextval
+
 
 # creating node elements
 n1 = Node("1")
@@ -20,9 +28,4 @@ list.header = n1
 n1.nextval = n2
 n2.nextval = n3
 
-# traversing the linked list
-lpointer = list.header
-while lpointer is not None:
-    node = lpointer
-    print node.dataval
-    lpointer = lpointer.nextval
+list.printList()
